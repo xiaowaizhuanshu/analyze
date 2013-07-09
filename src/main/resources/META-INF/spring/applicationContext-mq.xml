@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:amq="http://activemq.apache.org/schema/core" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd  
+		http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd
+  		http://activemq.apache.org/schema/core 
+  		http://activemq.apache.org/schema/core/activemq-core-5.5.0.xsd">
+
+	<context:property-placeholder location="classpath:*.properties"/>
+	
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="${activemq.brokerURL}" />
+	</bean>
+	
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="receiveTimeout" value="60000" />
+	</bean>
+	
+	
+	
+
+	<!-- 足彩投注成功队列目的地 -->
+	<bean id="zcBetSuccessQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg index="0" value="VirtualTopicConsumers.zcBet.orderbetTopic" />
+	</bean>
+	
+	<!-- 消息接收监听器用于异步接收消息(足彩投注比例) -->
+	<bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="destination" ref="zcBetSuccessQueue" />
+		<property name="messageListener" ref="onZcBetSuccessListener"/>
+	</bean>
+	
+	
+	
+	<!-- 中奖队列 -->
+	<bean id="orderEncash" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg index="0" value="VirtualTopicConsumers.latestwin.orderEncash" />
+	</bean>
+	
+	<!-- 消息接收监听器用于异步接收消息(足彩投注比例) -->
+	<bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="destination" ref="orderEncash" />
+		<property name="messageListener" ref="encashListener"/>
+	</bean>
+	
+</beans>

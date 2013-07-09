@@ -1,0 +1,42 @@
+获取足彩投注比例
+URL	http://localhost:8080/analyze/select/betpartition
+参数	lotno（彩种）：String
+	batchcode（期号）：String
+返回值	{"errorCode":"0","value":"xxx"} 
+errorCode:500(出错)，0(正常)；value为JSON格式的value
+T01003的value格式为：
+{\"list\":[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]}
+
+T01004的value格式为：
+{\"list\":[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]}
+
+T01005的value格式为：
+{\"list\":[[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]]}
+
+T01006的value格式为：
+{\"list\":[[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]]}
+获取高频彩最新中奖
+URL	http://localhost:8080/analyze/select/statiswinning
+参数	lotno（彩种）：String
+返回值	{"errorCode":"0","value":"xxx"} 
+errorCode:500(出错)，0(正常)；value为JSON格式的value
+Value格式为：
+[["{\"amount\":1000,\"code\":\"\",\"data\":1334661759223,\"email\":null,\"id\":0,\"lotno\":\"T01007\",\"mobildid\":\"wap彩板\",\"nickName\":null,\"playtype\":\"1D\",\"userno\":\"00000158\"}","{\"amount\":1000,\"code\":\"\",\"data\":1334661757240,\"email\":null,\"id\":0,\"lotno\":\"T01007\",\"mobildid\":\"wap彩板\",\"nickName\":null,\"playtype\":\"1D\",\"userno\":\"00000158\"}","{\"amount\":1000,\"code\":\"\",\"data\":1334661754758,\"email\":null,\"id\":0,\"lotno\":\"T01007\",\"mobildid\":\"wap彩板\",\"nickName\":null,\"playtype\":\"1D\",\"userno\":\"00000158\"}","{\"amount\":1000,\"code\":\"\",\"data\":1334661656242,\"email\":null,\"id\":0,\"lotno\":\"T01007\",\"mobildid\":\"wap彩板\",\"nickName\":null,\"playtype\":\"1D\",\"userno\":\"00000158\"}","{\"amount\":1000,\"code\":\"\",\"data\":1334660758168,\"email\":null,\"id\":0,\"lotno\":\"T01007\",\"mobildid\":\"wap彩板\",\"nickName\":null,\"playtype\":\"1D\",\"userno\":\"00000158\"}"]]
+
+
+
+
+
+
+
+
+
+刷新投注比例
+URL	http://localhost:8080/analyze/system/refreshBetpartition
+参数	lotno（彩种）：String
+	batchcode（期号）：String
+返回值	errorCode:500(出错)，0(正常)
+刷新最新中奖
+URL	http://localhost:8080/analyze/system/refreshStatisticsWinning
+参数	lotno（彩种）：String
+返回值	errorCode:500(出错)，0(正常)
