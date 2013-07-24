@@ -2,3 +2,10 @@
 .classpath
 .project
 target
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+>>>>>>> 17aff2a30fefb89d23ea6e7f590caadc720322b6
