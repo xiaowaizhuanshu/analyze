@@ -406,51 +406,11 @@
 				<database.maxIdle>100</database.maxIdle>
 				<database.minIdle>0</database.minIdle>
 				<database.maxWait>100</database.maxWait>
-				<tomcat.manager.port>8080</tomcat.manager.port>
-				<activemq.brokerURL>tcp://192.168.0.92:61616</activemq.brokerURL>
-				<memcache.client.ip>192.168.0.92:12000</memcache.client.ip>
-				<logback.appender>STDOUT</logback.appender>
-				<url.lottery>http://192.168.0.42:8080/lottery</url.lottery>
-			</properties>
-		</profile>
-		
-		<profile>
-			<id>118</id>
-			
-			<properties>
-				<database.url>jdbc:mysql://192.168.0.92:3306/analyze?characterEncoding=utf-8</database.url>
-				<database.driverClassName>com.mysql.jdbc.Driver</database.driverClassName>
-				<database.username>jrtConsole</database.username>
-				<database.password>jrtConsole</database.password>
-				<tomcat.manager.url>http://192.168.0.118:8090/manager</tomcat.manager.url>
 				<tomcat.manager.port>8090</tomcat.manager.port>
-				<activemq.brokerURL>tcp://192.168.0.92:61616</activemq.brokerURL>
-				<memcache.client.ip>192.168.0.92:12000</memcache.client.ip>
-				<logback.appender>analyzeLog</logback.appender>
-				<log.dir>/root/tomcat_8090/logs</log.dir>
-				<url.lottery>http://192.168.0.42:8080/lottery</url.lottery>
-			</properties>
-		</profile>
-		
-		<profile>
-			<id>beijing</id>
-
-			<properties>
-				<database.url>jdbc:mysql://192.168.99.120:3306/analyze?characterEncoding=utf-8</database.url>
-				<database.driverClassName>com.mysql.jdbc.Driver</database.driverClassName>
-				<database.username>jrtConsole</database.username>
-				<database.password>jrtConsole</database.password>
-				<database.removeAbandoned>true</database.removeAbandoned>
-				<database.removeAbandonedTimeout>60</database.removeAbandonedTimeout>
-				<database.logAbandoned>true</database.logAbandoned>
-				<database.validationQuery>select 1 from dual</database.validationQuery>
-				<database.testOnBorrow>true</database.testOnBorrow>
-				<tomcat.manager.url>http://192.168.99.2:9080/manager</tomcat.manager.url>
-				<activemq.brokerURL>failover://(tcp://192.168.99.30:61616,tcp://192.168.99.31:61616)?randomize=false</activemq.brokerURL>
-				<memcache.client.ip>192.168.99.16:12000,192.168.99.9:12000</memcache.client.ip>
-				<logback.appender>analyzeLog</logback.appender>
-				<log.dir>/opt/logs</log.dir>
-				<url.lottery>http://192.168.99.6/lottery</url.lottery>
+				<activemq.brokerURL>tcp://192.168.15.15:61616</activemq.brokerURL>
+				<memcache.client.ip>192.168.15.15:12000</memcache.client.ip>
+				<logback.appender>STDOUT</logback.appender>
+				<url.lottery>http://192.168.15.15:8888/lottery</url.lottery>
 			</properties>
 		</profile>
 	</profiles>
